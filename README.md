@@ -9,4 +9,8 @@ D) This game will be interesting because it will help the reader increase their 
 
 E) We plan to use C++, GitHub, textfiles, and PuTTy/terminal for now. 
 
-F) The input is the user input from the keys guessing (letters), and the output is what is drawn on the screen and added to the blank (where the letters will be filled in as the user guesses).  
+F) The input is the user input from the keys guessing (letters), and the output is what is drawn on the screen and added to the blank (where the letters will be filled in as the user guesses). 
+
+<img src = "images/designpattern.png" width = "700" height = "500" > 
+
+Diagram Description: We are using the Strategy design pattern to recongnize the different functions needed based on whether or not the guess was correct. We are using the Visitor design pattern to select which specific function, and the Composite pattern to take in guesses and then check and modify them on whether or not they are correct. This allows all 3 patterns to work together. 
