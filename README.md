@@ -1,12 +1,12 @@
 # CS 100 Programming Project
 A) Group Members: Mariam Razak (mraza008@ucr.edu) and Maya Fall (mfall003@ucr.edu)
 
-B) Title of Project: Catform
+B) Title of Project: Hangman
 
-C) What it is: We will be working on a platform game where the player (who plays as a cat) will overcome obstacles in order to progess and earn points. Should the character collide with the obstacles instead of avoiding them, the game will end until the player chooses to re-play.
+C) What it is: What it is: We will be working on a hangman game in terminal. The user will guess letters of a work and either be correct in which case a space of the blank will be filled in, or be incorrect in which case the next part of the 'man' will be drawn. 
 
-D) This game will be interesting because it is one that we have not attempted to create before and will be fun for the users because it will be interactive, challenging, and cute due to the characters and obstacle graphics. 
+D) This game will be interesting because it will help the reader increase their spelling and word recognition abilities. It will also allow the user to choose themed words (ie Shakespere or Harry Potter), making the game more personalized and fun for the individual. 
 
-E) We plan to use C++, GitHub, and PuTTy/terminal for now. 
+E) We plan to use C++, GitHub, textfiles, and PuTTy/terminal for now. 
 
-F) The input is the user input from the keys controlling the movements and the output is the movement of the character (ie jumping, ducking, etc.) as well as the visuals.  
+F) The input is the user input from the keys guessing (letters), and the output is what is drawn on the screen and added to the blank (where the letters will be filled in as the user guesses).  
