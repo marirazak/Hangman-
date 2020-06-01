@@ -11,17 +11,16 @@ E) We plan to use C++, GitHub, textfiles, and PuTTy/terminal.
 
 F) The input is the user input from the keys guessing (letters), and the output is what is drawn on the screen and added to the blank (where the letters will be filled in as the user guesses). 
 
-
+![alt text](https://github.com/cs100/final-project-mm/blob/master/images/final5.png)
 
 We are using the abstract factory pattern by having an abstract base class (board) and concrete classes fullboard and emptyboard. We are using the strategy pattern by having different versions of draw_board in that act in different ways based on whether it is the first guess or there have been no correct guesses, or if correct guesses have been made. Finally, we are using the visitor pattern to change behavior. The object, guess, must be affected by user input. The guess class accepts input and modifies its behavior based on what is taken in. 
 
 To view this code’s tests, run cmake3 . and then make. The test executable is ./test, and to play the game, run ./play.
-
-
+![alt text](https://github.com/cs100/final-project-mm/blob/master/images/final1.JPG)
 
 Some correct and incorrect guesses. 
 
-
+![alt text](https://github.com/cs100/final-project-mm/blob/master/images/final2.JPG)
 A finished, successful game. 
-
+![alt text](https://github.com/cs100/final-project-mm/blob/master/images/final3.JPG)
 A finished, failed game. 
