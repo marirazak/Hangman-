@@ -19,7 +19,7 @@ string chooseword() {
     std::cin >> choice;
     transform(choice.begin(), choice.end(), choice.begin(), ::tolower);
     while (choice != "harry" && choice != "cs" && choice != "fruit") {
-        std::cout << "Please choose a Category: Harry Potter | CS" << std::endl;
+        std::cout << "Please choose a Category: Harry | CS | Fruit" << std::endl;
         std::cin>>choice;
     }
     
