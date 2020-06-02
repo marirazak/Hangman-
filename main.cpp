@@ -1,3 +1,5 @@
+
+  
 #include <iostream>
 #include <fstream> //file stuff
 #include <string>
@@ -12,14 +14,13 @@
 
 using namespace std;
 
-//chooses random word from test file based on the category chosen by user
-string chooseword() { 
+string chooseword() {
     std::string choice;
     std::cout << "Please choose a Category: Harry | CS | Fruit" << std::endl;
     std::cin >> choice;
     transform(choice.begin(), choice.end(), choice.begin(), ::tolower);
     while (choice != "harry" && choice != "cs" && choice != "fruit") {
-        std::cout << "Please choose a Category: Harry | CS | Fruit" << std::endl;
+        std::cout << "Please choose a Category: Harry Potter | CS" << std::endl;
         std::cin>>choice;
     }
     
@@ -54,9 +55,10 @@ string chooseword() {
     srand(time(NULL));
     wordnum = rand() % number + 1;
     
-    //retrieving word from file
+    
     std::string word;
     for(int i = 0; i <= wordnum; i++) {
+        //word = "";
         getline(myfile,word);
     }
     
@@ -66,46 +68,61 @@ string chooseword() {
 }
 
 int main(){
+    //    char userguess;
     
     std::cout << "This is a HANGMAN game. Guess the word before the man is fully drawn." <<std::endl;
-   
-    std::string word = chooseword(); //retrieving word
-    transform(word.begin(), word.end(), word.begin(), ::tolower); //casting to lowercase
+    //determine word. sample for now
+    std::string word = chooseword();
+    transform(word.begin(), word.end(), word.begin(), ::tolower);
     
-    emptyboard* newboard = new emptyboard(word); //creates empty board with blanks based on word
+    //std::string word = "language";
+    
+    //creates empty board
+    emptyboard* newboard = new emptyboard(word);
     newboard->draw_board();
- 
+    
+   // int count = 0;
     std::string userguess;
     std::cout << "Guess: " <<std::endl;
     std::cin >> userguess;
     
-    std::vector<std::string> holding = newboard->returnvec(); //storing guess as vec 
-    fullboard* newboard2 = new fullboard(word, userguess, holding); 
+    //creates full board
+    std::vector<std::string> holding = newboard->returnvec();
+    fullboard* newboard2 = new fullboard(word, userguess, holding);
     Man* newman = new Man();
     
     int count = 0; // to count wrong guesses	
-    
-    Guess* newguess = new Guess(word, userguess); 
+    //checks if guess is correct; adds if yes draws if no
+    Guess* newguess = new Guess(word, userguess);
+	std::vector<Guess*>holdingguess; 
+    newguess->add(holdingguess); 
+    std::cout << std::endl << "Guesses: ";
+	 newguess->printguess(); 
+	std::cout << std::endl; 
     if(newguess->guess_correct() == true){
-        newboard2->draw_board(); //adds quess to baord if correct
+        newboard2->draw_board();
     }
     else{
-        newman->draw();  //draws part of man if incorrect
+        newman->draw();
      	newboard2->draw_board();
 	count++;
     }
-    
+    holdingguess = newguess->returnvec();
     holding = newboard2->returnvec(); 
     bool done = false;
- 
-    //checsk guesses until game is won, or man is fully drawn   
+    
     while(done == false){
         std::cout << "  Guess: " << std::endl;
         std::cin >>userguess;
         transform(userguess.begin(), userguess.end(), userguess.begin(), ::tolower);
         
         
-        Guess* newguess2 = new Guess(word, userguess);
+         Guess* newguess2 = new Guess(word, userguess);
+	 newguess2->add(holdingguess);
+	 std::cout << std::endl << "Guesses: "; 
+	 newguess2->printguess();
+		std::cout << std::endl; 
+
         fullboard* newboard3 = new fullboard(word, userguess, holding);
         if(newguess2->guess_correct() == true){
             newboard3->draw_board();
@@ -117,8 +134,8 @@ int main(){
 	    count++;
         }
         holding = newboard3->returnvec();
-        
-        if(count == 6) { //checking if man is fully drawn, lose if yes
+        holdingguess = newguess2->returnvec(); 
+        if(count == 6) {
             std::cout << endl;
             std::cout << "The word was " << word << endl;
             std::cout << "You lost :( Play Again Later!" << endl;
@@ -126,7 +143,8 @@ int main(){
         }
         
         done = true;
-        for(int j = 0; j <holding.size(); j++) { //checking for game being won; yes if no more blanks
+        for(int j = 0; j <holding.size(); j++){
+            
             if(holding.at(j) == " _ "){
                 done = false;
             }
@@ -137,5 +155,4 @@ int main(){
         }
     }
 }
-
 
