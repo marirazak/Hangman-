@@ -1,5 +1,5 @@
-# CS 100 Programming Project
-A) Group Members: Mariam Razak (mraza008@ucr.edu) and Maya Fall (mfall003@ucr.edu)
+# Hangman Programming Project
+A) Authors: Mariam Razak, Maya Fall 
 
 B) Title of Project: Hangman
 
